@@ -2,20 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root color variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff5f7; /* Light pink */
+  --foreground: #4a4a4a; /* Dark gray text */
+  --primary: #ff69b4; /* Hot pink for accents */
+  --secondary: #ffb6c1; /* Soft light pink */
+  --border: #ffc0cb; /* Subtle pink borders */
 }
 
+/* Dark mode colors */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1f1a24; /* Dark purple */
+    --foreground: #e8dff4; /* Lavender text */
+    --primary: #ff69b4; /* Hot pink */
+    --secondary: #b03060; /* Deep pink */
+    --border: #e75480; /* Rosy pink borders */
   }
 }
 
+/* Body styles */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Utility classes */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--foreground);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--secondary);
+}
+
+input, textarea {
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Header styles */
+header {
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Footer styles */
+footer {
+  background-color: var(--secondary);
+  color: var(--background);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
 }
