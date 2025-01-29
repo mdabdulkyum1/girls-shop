@@ -5,14 +5,14 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-primary to-secondary text-white py-20 px-6 text-center">
+      <div className="relative bg-gradient-to-r from-primary to-secondary py-20 px-6 text-center">
         <h1 className="text-5xl font-bold mb-6">Welcome to Girls Shop</h1>
         <p className="text-lg mb-8">
           Explore the latest trends in fashion, accessories, and more for the stylish you!
         </p>
-        <button className="bg-white text-primary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary hover:text-white transition">
+        <button className=" text-primary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary hover:  transition">
           Shop Now
         </button>
       </div>
@@ -38,7 +38,7 @@ export default function Home() {
                 height={100}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70"></div>
-              <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
+              <div className="absolute bottom-4 left-4   font-bold text-lg">
                 {category.name}
               </div>
             </div>
@@ -47,7 +47,7 @@ export default function Home() {
       </div>
 
       {/* Call-to-Action Section */}
-      <div className="bg-secondary text-white py-16 px-6 text-center">
+      <div className="bg-secondary   py-16 px-6 text-center">
         <h2 className="text-2xl font-bold mb-4">Exclusive Deals Await You</h2>
         <p className="text-lg mb-6">
           Sign up for our newsletter to stay updated on the latest collections and offers!
@@ -58,7 +58,7 @@ export default function Home() {
             placeholder="Enter your email"
             className="p-3 rounded-l-lg w-80 focus:outline-none"
           />
-          <button className="bg-primary px-6 py-3 rounded-r-lg text-white font-semibold hover:bg-white hover:text-primary transition">
+          <button className="bg-primary px-6 py-3 rounded-r-lg   font-semibold hover:bg-white hover:text-primary transition">
             Subscribe
           </button>
         </div>
