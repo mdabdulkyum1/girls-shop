@@ -1,6 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import logo from "@/app/logo.jpg";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ModeToggle } from './../ThemeToggle/ThemeToggle';
+
 
 const Navbar = () => {
   const links = <>
@@ -10,9 +15,17 @@ const Navbar = () => {
   <li>
         <Link href="/shop">Shop</Link>
   </li>
+  <li>
+        <Link href="/dashboard">Dashboard</Link>
+  </li>
   </>
+
+
+const pathname = usePathname()
+
+if(!pathname.includes("dashboard")){
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,7 +52,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="">
-          <Image src={logo} height={80}></Image>
+          <Image src={logo} height={80} alt="Logo"></Image>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -48,9 +61,16 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <button class="btn bg-primary text-white rounded-lg">Login</button>
+      <ModeToggle></ModeToggle>
+        <button className="btn bg-pink-500 text-white rounded-lg">Login</button>
       </div>
     </div>
+  );
+}
+
+
+  return (
+    <></>
   );
 };
 

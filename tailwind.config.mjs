@@ -1,39 +1,82 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
+    darkMode: ["class"],
+    content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: "#ff69b4", // Hot pink for primary accents
-        secondary: "#ffb6c1", // Soft pink for secondary accents
-        border: "#ffc0cb", // Light pink for borders
-        darkBackground: "#1f1a24", // Dark purple for dark mode
-        darkForeground: "#e8dff4", // Lavender for text in dark mode
-        darkSecondary: "#b03060", // Deep pink for dark mode accents
-      },
-      fontFamily: {
-        sans: ["Arial", "Helvetica", "sans-serif"], // Default font stack
-      },
-      spacing: {
-        18: "4.5rem", // Custom spacing for unique layout needs
-        26: "6.5rem",
-      },
-      borderRadius: {
-        lg: "0.5rem",
-        xl: "1rem",
-        "2xl": "1.5rem",
-      },
-    },
+  	extend: {
+  		colors: {
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
+  			primary: {
+  				DEFAULT: 'hsl(var(--primary))',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
+  			secondary: {
+  				DEFAULT: 'hsl(var(--secondary))',
+  				foreground: 'hsl(var(--secondary-foreground))'
+  			},
+  			border: 'hsl(var(--border))',
+  			darkBackground: '#1f1a24',
+  			darkForeground: '#e8dff4',
+  			darkSecondary: '#b03060',
+  			card: {
+  				DEFAULT: 'hsl(var(--card))',
+  				foreground: 'hsl(var(--card-foreground))'
+  			},
+  			popover: {
+  				DEFAULT: 'hsl(var(--popover))',
+  				foreground: 'hsl(var(--popover-foreground))'
+  			},
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted))',
+  				foreground: 'hsl(var(--muted-foreground))'
+  			},
+  			accent: {
+  				DEFAULT: 'hsl(var(--accent))',
+  				foreground: 'hsl(var(--accent-foreground))'
+  			},
+  			destructive: {
+  				DEFAULT: 'hsl(var(--destructive))',
+  				foreground: 'hsl(var(--destructive-foreground))'
+  			},
+  			input: 'hsl(var(--input))',
+  			ring: 'hsl(var(--ring))',
+  			chart: {
+  				'1': 'hsl(var(--chart-1))',
+  				'2': 'hsl(var(--chart-2))',
+  				'3': 'hsl(var(--chart-3))',
+  				'4': 'hsl(var(--chart-4))',
+  				'5': 'hsl(var(--chart-5))'
+  			}
+  		},
+  		fontFamily: {
+  			sans: [
+  				'Arial',
+  				'Helvetica',
+  				'sans-serif'
+  			]
+  		},
+  		spacing: {
+  			'18': '4.5rem',
+  			'26': '6.5rem'
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			xl: '1rem',
+  			'2xl': '1.5rem',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		}
+  	}
   },
   plugins: [
     require("daisyui"),
-  ],
+      require("tailwindcss-animate")
+],
   daisyui: {
     themes: [
       {
