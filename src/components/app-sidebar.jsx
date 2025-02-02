@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, CircleUserRound, Search, Settings, CirclePlus, Users } from "lucide-react"
 
 import {
   Sidebar,
@@ -22,12 +22,17 @@ const items = [
   {
     title: "Profile",
     url: "/dashboard/admin-profile",
-    icon: Home,
+    icon: CircleUserRound,
   },
   {
-    title: "inbox",
+    title: "Add Product's",
     url: "#",
-    icon: Inbox,
+    icon: CirclePlus,
+  },
+  {
+    title: "Manage Users",
+    url: "/dashboard/manage-users",
+    icon: Users,
   },
   {
     title: "Calendar",
@@ -43,6 +48,11 @@ const items = [
     title: "Settings",
     url: "#",
     icon: Settings,
+  },
+  {
+    title: "Main Home",
+    url: "/",
+    icon: Home,
   },
 ]
 
@@ -69,7 +79,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup>
+        {/* <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -85,7 +95,7 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </SidebarGroup> */}
 
       </SidebarContent>
     </Sidebar>
