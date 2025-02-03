@@ -62,7 +62,10 @@ if(!pathname.includes("dashboard")){
       </div>
       <div className="navbar-end">
       <ModeToggle></ModeToggle>
+
+      <Link href="/login">
         <button className="btn bg-pink-500 text-white rounded-lg">Login</button>
+      </Link>
       </div>
     </div>
   );
