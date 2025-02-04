@@ -20,6 +20,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { imageUpload } from "@/lib/utils";
 import toast from "react-hot-toast";
+import { registerUser } from "@/app/actions/auth/registerUser";
 
 // Validation Schema
 const formSchema = z
@@ -78,12 +79,18 @@ export function RegisterForm() {
       image: imageUrl,
       role: "user"
     }
-    console.log("Registration Data:", payload);
+    const userConfirm = await registerUser(payload);
+    if(userConfirm === null){
+      toast.dismiss(toastId)
+    }
+    if(userConfirm.insertedId){
+      toast.success('Successfully created!');
+      toast.dismiss(toastId)
+      form.reset();
+      setPreview(null);
+    }
+    
 
-    toast.success('Successfully created!');
-    toast.dismiss(toastId)
-    form.reset();
-    setPreview(null);
 
     
   };
