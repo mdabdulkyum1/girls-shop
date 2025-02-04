@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
+import { signIn } from "next-auth/react"
 
 // Validation Schema
 const formSchema = z.object({
@@ -36,8 +37,13 @@ export function LoginForm() {
 
   const togglePassword = () => setShowPassword((prev) => !prev)
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data)
+  const onSubmit = async (data) => {
+    
+    const email = data.email;
+    const password = data.password;
+
+    await signIn("credentials", { email, password })
+    console.log(email, password);
   }
 
   return (
