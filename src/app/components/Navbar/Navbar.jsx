@@ -5,9 +5,13 @@ import logo from "@/app/logo.jpg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from './../ThemeToggle/ThemeToggle';
+import { signOut, useSession } from "next-auth/react";
 
 
 const Navbar = () => {
+
+  const { data: session, status} = useSession();
+
   const links = <>
   <li>
         <Link href="/">Home</Link>
@@ -60,12 +64,21 @@ if(!pathname.includes("dashboard")){
             {links}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-4">
       <ModeToggle></ModeToggle>
 
-      <Link href="/login">
-        <button className="btn bg-pink-500 text-white rounded-lg">Login</button>
-      </Link>
+      {
+        status === "authenticated" ? (<>
+          <div className="flex items-center gap-4">
+              <Image src={session?.user?.image} alt="logo" height={10} width={40} className="rounded-full object-fill w-10 h-10"/>
+              <button onClick={()=> signOut()} className="btn bg-pink-500 text-white rounded-lg">Log Out</button>
+          </div>
+          
+        </>) : (<Link href="/login">
+          <button className="btn bg-pink-500 text-white rounded-lg">Login</button>
+        </Link>)
+      }
+      
       </div>
     </div>
   );
