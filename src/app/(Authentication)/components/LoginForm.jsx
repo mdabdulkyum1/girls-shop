@@ -42,8 +42,11 @@ export function LoginForm() {
     const email = data.email;
     const password = data.password;
 
-    await signIn("credentials", { email, password })
-    console.log(email, password);
+    try{
+      await signIn("credentials", { email, password, callbackUrl: "/" })
+    }catch(error){
+      console.error(error);
+    }
   }
 
   return (

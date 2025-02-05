@@ -16,6 +16,7 @@ export const registerUser = async (payload) => {
        const hashedPassword = await bcrypt.hash(password, 10);
        payload.password = hashedPassword;
        const result = await userCollection.insertOne(payload);
+       result.insertedId = result.insertedId.toString();
        return result;
     }
     return null;
