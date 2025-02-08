@@ -9,44 +9,10 @@ import {
     TableRow,
   } from "@/components/ui/table"
   
-  const users = [
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      username: "johndoe123",
-      role: "Admin",
-      status: "Active",
-    },
-    {
-      name: "Emma Smith",
-      email: "emmasmith@example.com",
-      username: "emma_smith",
-      role: "User",
-      status: "Inactive",
-    },
-    {
-      name: "Liam Johnson",
-      email: "liamjohnson@example.com",
-      username: "liam_j",
-      role: "Moderator",
-      status: "Active",
-    },
-    {
-      name: "Olivia Brown",
-      email: "oliviabrown@example.com",
-      username: "olivia_brown",
-      role: "User",
-      status: "Pending",
-    },
-    {
-      name: "Noah Wilson",
-      email: "noahwilson@example.com",
-      username: "noah_w",
-      role: "Admin",
-      status: "Active",
-    },
-  ];
   
+  
+  const res = await fetch("http://localhost:3000/actions/getUser");
+  const data = await res.json();
   
   export function UsersTable() {
     return (
@@ -61,7 +27,7 @@ import {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {users.map((user, idx) => (
+          {data.map((user, idx) => (
             <TableRow key={idx}>
               <TableCell className="font-medium">{idx+1}</TableCell>
               <TableCell className="font-medium">{user.name}</TableCell>

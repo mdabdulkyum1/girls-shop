@@ -25,6 +25,7 @@ import { registerUser } from "@/app/actions/auth/registerUser";
 // Validation Schema
 const formSchema = z
   .object({
+    name: z.string().min(1, { message: "Name is required." }),
     email: z.string().email({ message: "Invalid email address." }),
     password: z
       .string()
@@ -49,6 +50,7 @@ export function RegisterForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -65,7 +67,7 @@ export function RegisterForm() {
 
   const onSubmit = async (data) => {
     const toastId = toast.loading('Waiting...');
-    const {email, password, profileImage} = data;
+    const {name, email, password, profileImage} = data;
     const imageUrl = await imageUpload(profileImage);
 
     if(!imageUrl){
@@ -74,6 +76,7 @@ export function RegisterForm() {
     }
 
     const payload = {
+      name,
       email,
       password,
       image: imageUrl,
@@ -112,6 +115,26 @@ export function RegisterForm() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            {/* Name Field */}
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      placeholder="Enter your Name"
+                      {...field}
+                      className="focus:ring-primary"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             {/* Email Field */}
             <FormField
               control={form.control}

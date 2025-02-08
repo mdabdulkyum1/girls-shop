@@ -20,6 +20,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
+import SocialLogin from "./SocialLogin";
 
 // Validation Schema
 const formSchema = z.object({
@@ -141,7 +142,8 @@ export function LoginForm() {
               </Button>
             </form>
           </Form>
-  
+          {/* Social */}
+          <SocialLogin />
           {/* Additional Links */}
           <div className="text-center mt-4">
             <p className="text-sm text-gray-600">
