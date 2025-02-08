@@ -3,9 +3,10 @@
 import Image from "next/image";
 import logo from "@/app/logo.jpg";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from './../ThemeToggle/ThemeToggle';
 import { signOut, useSession } from "next-auth/react";
+
 
 
 const Navbar = () => {
@@ -23,6 +24,15 @@ const Navbar = () => {
         <Link href="/dashboard">Dashboard</Link>
   </li>
   </>
+
+const router = useRouter();
+
+const handelSignOut = async () => {
+    await signOut({ redirect: false});
+    router.push("/login");
+}
+
+
 
 
 const pathname = usePathname()
@@ -71,7 +81,7 @@ if(!pathname.includes("dashboard")){
         status === "authenticated" ? (<>
           <div className="flex items-center gap-4">
               <Image src={session?.user?.image} alt="logo" height={10} width={40} className="rounded-full object-fill w-10 h-10"/>
-              <button onClick={()=> signOut()} className="btn bg-pink-500 text-white rounded-lg">Log Out</button>
+              <button onClick={handelSignOut} className="btn bg-pink-500 text-white rounded-lg">Log Out</button>
           </div>
           
         </>) : (<Link href="/login">
