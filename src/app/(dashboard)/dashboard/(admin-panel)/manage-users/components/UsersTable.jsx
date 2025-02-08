@@ -11,7 +11,8 @@ import {
   
   
   
-  const res = await fetch("http://localhost:3000/actions/getUser");
+  const res = await fetch("https://girls-shop.vercel.app/actions/getUser");
+  // const res = await fetch("http://localhost:3000/actions/getUser");
   const data = await res.json();
   
   export function UsersTable() {
