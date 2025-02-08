@@ -57,7 +57,7 @@ export const authOptions = {
                 const isExistUser = await userCollection.findOne({providerAccountId});
 
                 if(!isExistUser){
-                    const payload = { providerAccountId, provider, email: user_email, name, image };
+                    const payload = { providerAccountId, provider, email: user_email, name, image, role: "user" };
                     await userCollection.insertOne(payload);
                 }
             }
