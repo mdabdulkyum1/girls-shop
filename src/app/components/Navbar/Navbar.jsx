@@ -20,9 +20,12 @@ const Navbar = () => {
   <li>
         <Link href="/shop">Shop</Link>
   </li>
+  {
+    session?.user?.role === "admin" && 
   <li>
         <Link href="/dashboard">Dashboard</Link>
   </li>
+  }
   </>
 
 const router = useRouter();

@@ -62,9 +62,27 @@ export const authOptions = {
                 }
             }
           return true
+        },
+        async session({ session, token, user }) {
+          
+
+          if(token){
+              session.user.name = token.name;
+              session.user.role = token.role;
+          } 
+          return session
+        },
+        async jwt({ token, user, account, profile, isNewUser }) {
+          if(user){
+            token.name = user.name;
+            token.role = user.role; 
+          }
+          return token
         }
       }
   }
-
+   
 
   
+     
+    

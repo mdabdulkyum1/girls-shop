@@ -14,14 +14,16 @@ import {
 
 export function UsersTable() {
   const [users, setUsers] = useState([]);
-
+console.log(users);
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const res = await fetch("https://girls-shop.vercel.app/actions/getUser");
+        const res = await fetch("http://localhost:3000/actions/getUser");
         if (!res.ok) throw new Error("Failed to fetch data");
+        
 
         const data = await res.json();
+        console.log(data);
         setUsers(data);
       } catch (error) {
         console.error("Error fetching users:", error);
