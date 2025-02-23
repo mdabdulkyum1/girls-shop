@@ -18,7 +18,8 @@ console.log(users);
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const res = await fetch("https://girls-shop.vercel.app/actions/getUsers");
+        // const res = await fetch("https://girls-shop.vercel.app/actions/getUsers");
+        const res = await fetch("http://localhost:3000/actions/getUsers");
         if (!res.ok) throw new Error("Failed to fetch data");
         
 

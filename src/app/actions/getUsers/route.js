@@ -12,10 +12,10 @@ export async function GET(req, res) {
         const query = {email};
         const user = await userCollection.findOne(query);
 
-        console.log("check isAdmin = ", user?.role);
-
         if(user?.role === "admin"){
-            const users = await userCollection.find().toArray();
+            const filter = { email: { $ne: email } }; 
+            const users = await userCollection.find(filter).toArray();
+            console.log(users);
             return Response.json(users);
         }
         return Response.json({ message: "Forbidden access"}, {
