@@ -20,8 +20,7 @@ export function UsersTable() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        // const res = await fetch("https://girls-shop.vercel.app/actions/getUsers");
-        const res = await fetch("http://localhost:3000/actions/getUsers");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/actions/getUsers`);
         if (!res.ok) throw new Error("Failed to fetch data");
 
         const data = await res.json();
