@@ -26,7 +26,7 @@ const items = [
   },
   {
     title: "Add Product's",
-    url: "#",
+    url: "/dashboard/add-products",
     icon: CirclePlus,
   },
   {
